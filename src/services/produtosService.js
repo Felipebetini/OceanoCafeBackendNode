@@ -68,15 +68,19 @@ module.exports = {
     });
   },
 
-  delete: (id) => {
+  delete: (idprodutos) => {
     return new Promise((resolve, reject) => {
-      db.query("DELETE FROM produtos WHERE id = ?", [id], (error, results) => {
-        if (error) {
-          reject(error);
-          return;
+      db.query(
+        "DELETE FROM produtos WHERE idprodutos = ?",
+        [idprodutos],
+        (error, results) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+          resolve(results);
         }
-        resolve(results);
-      });
+      );
     });
   },
 };
